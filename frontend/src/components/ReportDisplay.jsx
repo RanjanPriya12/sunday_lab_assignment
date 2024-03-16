@@ -1,55 +1,15 @@
-import React, { useState } from 'react';
-import MyPdfComponent from './viewPdf';
+import React from 'react';
 import "./style/style.css";
+import { Link } from 'react-router-dom';
 
-
-const Modal = ({ isOpen, onClose, children }) => {
-  const handleClose = () => {
-    onClose();
-  };
-
-  return (
-    <div className={`modal ${isOpen ? 'open' : ''}`}>
-      <div className="modal-content">
-        <span className="close" onClick={handleClose}>&times;</span>
-        {children}
-      </div>
-    </div>
-  );
-};
 
 const ReportDisplay = ({ reports }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [openIndex, setOpenIndex] = useState(null);
-
-  const handleOpenModal = (index) => {
-    setIsModalOpen(true);
-    setOpenIndex(index);
-    console.log(index)
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setOpenIndex(null);
-  };
-
   return (
     <>
       {
-        reports?.map((item,index) => (
+        reports?.map(item => (
           <div key={item.id} className='reportSection'>
-            <>
-              {
-                !isModalOpen && <button onClick={(index)=>handleOpenModal(index)}>View Pdf Image</button>
-              }
-            </>
-            <>
-              {
-                isModalOpen && <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
-                  <MyPdfComponent pdfData={item} />
-                </Modal>
-              }
-            </>
+            <Link className='link' to={`/reports/${item.id}`}>{item.id }. View Pdf Image</Link> 
           </div>
         ))
       }
