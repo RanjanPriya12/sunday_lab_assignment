@@ -1,9 +1,9 @@
-import express from "express";
+const express = require("express");
 const router= express.Router();
-import { cropAnalysis,getAllReports,getReportById } from "../controllers/crop.controller";
+const { cropAnalysis,getAllReports,getReportById } = require("../controllers/crop.controller");
 
-router.route("/getRports").get(getAllReports);
-router.route("/imageAnalysis").post(cropAnalysis);
+router.route("/reports").get(getAllReports);
+router.route("/image").post(cropAnalysis);
 router.route("/report/:id").get(getReportById);
 
-module.exports = router;
+module.exports = router; 

@@ -1,20 +1,19 @@
-import mysql from 'mysql';
+const mysql = require('mysql2');
+require("dotenv").config();
 
 const connection = mysql.createConnection({
-    connectionLimit: 10,
-    host: 'localhost',
-    user: 'root',
-    password: 'mysqlroot',
-    database: 'cropDB'
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER_NAME,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
 connection.connect((err) => {
     if (err) {
         throw err;
     } else {
-        const sql = `CREATE TABLE IF NOT EXISTS crops(
-        id integer PRIMARY KEY AUTO_INCREMENT,
-        title VARCHAR(255) NOT NULL,
+        const sql = `CREATE TABLE IF NOT EXISTS reports(
+        id integer PRIMARY KEY AUTO_INCREMENT NOT NULL,
         image TEXT NOT NULL,
         pdf_data LONGBLOB,
         createdAt TIMESTAMP NOT NULL DEFAULT NOW()
