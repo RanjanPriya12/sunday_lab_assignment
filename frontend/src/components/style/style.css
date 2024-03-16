@@ -35,30 +35,28 @@
 
 .ImageSection {
     display: flex;
+    width: 50%;
+    margin: auto;
+    padding: 40px;
     flex-direction: column;
     text-align: center;
+    align-items: center;
     justify-content: center;
 }
 
-.container {
+nav ul{
     display: flex;
-    flex-direction: column;
+    width: 30%;
+    margin: auto;
+    font-size: 20px;
     align-items: center;
+    margin-top: 20px;
+    justify-content: space-around;
+    list-style: none;
 }
 
-select {
-    padding: 5px;
-    margin-bottom: 10px;
+.link{
+    text-decoration: none;
 }
 
-.modal {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 5px;
-}
 
-.close {
-    cursor: pointer;
-    font-size: 30px;
-    cursor: pointer;
-}

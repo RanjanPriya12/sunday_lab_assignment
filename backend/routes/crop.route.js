@@ -4,6 +4,6 @@ const { cropAnalysis,getAllReports,getReportById } = require("../controllers/cro
 
 router.route("/reports").get(getAllReports);
 router.route("/image").post(cropAnalysis);
-router.route("/report/:id").get(getReportById);
+router.route("/reports/:id").get(getReportById);
 
 module.exports = router; 

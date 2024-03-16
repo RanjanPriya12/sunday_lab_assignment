@@ -1,5 +1,4 @@
 const express = require("express");
-const cloudinary = require("cloudinary");
 const fileUpload = require("express-fileupload");
 const cropRouter = require("./routes/crop.route");
 const cors = require('cors');
@@ -11,13 +10,6 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
 }));
 app.use(fileUpload());
-
-
-cloudinary.config({
-    cloud_name: process.env.CLOUDINARY_NAME,
-    api_key: process.env.CLOUDINARY_API_KEY,
-    api_secret: process.env.CLOUDINARY_SECRET_KEY,
-});
 app.use("/crops/api/v1/", cropRouter);
 
 const port = process.env.PORT || 5000;
