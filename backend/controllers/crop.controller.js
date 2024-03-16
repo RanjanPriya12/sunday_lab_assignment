@@ -1,5 +1,4 @@
 const connection = require("../configs/db");
-const cloudinary = require("cloudinary");
 const sharp = require('sharp');
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
@@ -23,7 +22,6 @@ exports.cropAnalysis = async (req, res) => {
             }
             const pdfFileName = `output_${Date.now()}.pdf`;
             fs.writeFileSync(`${pdfFolderPath}/${pdfFileName}`, finalPdfBuffer);
-            //const myCloud = await cloudinary.v2.uploader.upload(base64Image)
             const insertQuery = `insert into reports(image,pdf_data) values(?,?)`;
             connection.query(insertQuery, [req.body.title, finalPdfBuffer], (err, result) => {
                 if (err) {
